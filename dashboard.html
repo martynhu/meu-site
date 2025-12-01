@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+</head>
+<body>
+
+<h1>Feedbacks recebidos</h1>
+<ul id="lista"></ul>
+
+<script>
+  async function carregar() {
+    const res = await fetch("/api/feedback");
+    const dados = await res.json();
+
+    const lista = document.getElementById("lista");
+    lista.innerHTML = "";
+
+    dados.forEach(item => {
+      const li = document.createElement("li");
+      li.innerText = item.mensagem;
+      lista.appendChild(li);
+    });
+  }
+
+  carregar();
+</script>
+
+</body>
+</html>
