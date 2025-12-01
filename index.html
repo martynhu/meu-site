@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Meu Site</title>
+</head>
+<body>
+
+  <h1>Meu site online 😎</h1>
+
+  <textarea id="msg" placeholder="Digite seu feedback"></textarea>
+  <br><br>
+  <button onclick="enviarFeedback()">Enviar</button>
+
+  <script>
+    async function enviarFeedback() {
+      const msg = document.getElementById("msg").value;
+
+      await fetch("/api/feedback", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ mensagem: msg })
+      });
+
+      alert("Feedback enviado!");
+    }
+  </script>
+
+</body>
+</html>
