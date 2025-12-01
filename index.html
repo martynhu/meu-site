@@ -1,32 +1,49 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Meu Site</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arquitetura & Engenharia Mecânica</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navbar.css">
 </head>
 <body>
+    <!-- NAVBAR -->
+    <nav>
+        <div class="container">
+            <a href="#home" class="logo" onclick="loadHome()">AE Studio</a>
+            <ul class="nav-links">
+                <!-- Links agora chamam função loadPage para carregar conteúdo dinâmico -->
+                <li><a href="javascript:void(0)" onclick="loadPage('pages/arquitetura.html')">Arquitetura</a></li>
+                <li><a href="javascript:void(0)" onclick="loadPage('pages/engenharia-mecanica.html')">Engenharia Mecânica</a></li>
+                <li><a href="javascript:void(0)" onclick="loadPage('pages/feedback.html')">Feedback</a></li>
+                <li><a href="javascript:void(0)" onclick="loadPage('pages/localizacao.html')">Localização</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
 
-  <h1>Meu site online 😎</h1>
+    <!-- HERO -->
+    <section id="home" class="hero">
+        <h1>Arquitetura & Engenharia Mecânica</h1>
+        <p>Soluções inovadoras para seus projetos</p>
+    </section>
 
-  <textarea id="msg" placeholder="Digite seu feedback"></textarea>
-  <br><br>
-  <button onclick="enviarFeedback()">Enviar</button>
+    <!-- Container dinâmico que carrega conteúdo das páginas -->
+    <main id="content">
+        <!-- Conteúdo será carregado aqui dinamicamente -->
+    </main>
 
-  <script>
-    async function enviarFeedback() {
-      const msg = document.getElementById("msg").value;
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2025 AE Studio - Arquitetura & Engenharia Mecânica</p>
+        <p>Todos os direitos reservados.</p>
+    </footer>
 
-      await fetch("/api/feedback", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ mensagem: msg })
-      });
-
-      alert("Feedback enviado!");
-    }
-  </script>
-
+    <script src="js/script.js"></script>
 </body>
 </html>
